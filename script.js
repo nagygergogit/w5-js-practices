@@ -1,3 +1,6 @@
+console.log(myFirstGlobalVar);
+
+/*
 var myFirstString = 'Ez egy string.';
 var mySecondString = "Ez is egy string.";
 var myThirdString = `Ez pedig egy többsoros string.`;
@@ -95,7 +98,7 @@ var theLastFunction = function(text) {
 theLastFunction(function() {
     return "I'm calling the last function.";
 })
-
+*/
 /*
 var window = {
     addEventListener: function(eventName, eventFunction) {
@@ -103,7 +106,138 @@ var window = {
     }
 }
 */
-
+/*
 window.addEventListener("load", function() {
     console.log("Az oldal betöltődött.");
 })
+*/
+
+
+
+var myFirstGlobalVar = 0;
+
+//console.log(mySecondGlobalVar);
+
+let mySecondGlobalVar = 1;
+
+//console.log(myThirdGlobalVar);
+
+const myThirdGlobalVar = 2;
+
+(function() {
+    (function() {
+        (function() {
+            var a = 3;
+            console.log(a);
+        }())
+        
+    }())
+}())
+//console.log(myFirstGlobalVar, mySecondGlobalVar, myThirdGlobalVar);
+
+var a = 6;
+
+function f1() {
+    var a = "undefined";
+    console.log(a);
+    a = 4;
+    console.log(a);
+    //console.log(myFirstGlobalVar, mySecondGlobalVar, myThirdGlobalVar);
+}
+f1();
+
+function f2() {
+    console.log(a);
+    var a = 5;
+    console.log(a);
+    //console.log(myFirstGlobalVar, mySecondGlobalVar, myThirdGlobalVar);
+}
+f2();
+
+console.log(a);
+
+function f3() {
+    console.log(b);
+    var b;
+    console.log(b);
+    b = 7;
+    console.log(b);
+}
+f3();
+
+function f4() {
+    //console.log(b);
+    let b;
+    console.log(b);
+    b = 7;
+    console.log(b);
+}
+f4();
+
+function f5() {
+    //console.log(b);
+    const b = 7;
+    console.log(b);
+    //b = 8;
+    //console.log(b);
+}
+f5();
+
+function f6() {
+    let c = "";
+    console.log(c);
+    console.log(typeof c);
+    console.log("valami" + c);
+    if (true) {
+        let d = 9;
+        const e = 10;
+    console.log(d, e);
+    } 
+}
+
+f6();
+
+function f7() {
+  //console.log(i);
+  let ls = ["a", "b", "c", "d", "e", "f", true];
+  
+  //console.log(ls[0]);
+  //console.log(ls[4]);
+  for (let i = 0; i < ls.length; i++) {
+    const item = ls[i];
+    console.log(item);
+  }  
+  //console.log(i);
+
+  for (const item of ls) {
+      console.log(item);
+  }
+
+  for (const key in ls) {
+      console.log(key);
+      const item = ls[key];
+      console.log(item);
+  }
+  console.log(f8(ls));
+}
+f7();
+
+function f8(arrayFromParam) {
+    let abc = "";
+    for (const item of arrayFromParam) {
+        if (item !== true) {
+            abc += item;    
+        }
+    }
+    return abc;
+}
+
+const f9 = text => `<div>${text}</div>`;
+console.log(f9("hello"))
+
+window.addEventListener("load", function() {
+    let f8Result = f8(["10", "17", "38", "11"])
+    document.getElementById("root").insertAdjacentHTML("afterbegin", f8Result);
+    document.getElementById("root").insertAdjacentHTML("afterbegin", f9("tuesday"))
+})
+
